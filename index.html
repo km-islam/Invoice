@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>invoice</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        padding: 0;
+        margin: 0;
+        outline: 0;
+      }
+      section {
+        width: 970px;
+        height: fit-content;
+        padding: 50px 0;
+        background: rgb(255, 255, 255);
+        margin: 0 auto;
+        box-shadow: 0px 0px 9px 2px rgba(0, 0, 0, 0.33);
+      }
+      .btn {
+        padding: 0 1rem;
+        background-color: rgb(43, 3, 161);
+        color: #fff;
+        border-radius: 0.5rem;
+        font-size: 12px;
+      }
+      .btn-placed {
+        background-color: #0d6efd;
+      }
+      .btn-confirmed {
+        background-color: #198754;
+      }
+      .btn-processing {
+        background-color: #31d2f2;
+      }
+      .btn-shipped {
+        background-color: #1c1f23;
+      }
+      .btn-delivered {
+        background-color: rgb(82, 3, 0);
+      }
+      .btn-cancel {
+        background-color: rgb(47, 0, 128);
+      }
+      .brand-logo {
+        display: flex;
+        align-items: center;
+        column-gap: 10px;
+        padding: 0 30px;
+      }
+      .brand-logo > img {
+        width: 40px;
+        height: 40px;
+      }
+      .brand-logo > span {
+        font-size: 30px;
+        font-weight: 600;
+        color: #000;
+      }
+      .section-one {
+        width: 100%;
+        height: 40px;
+        background-color: yellow;
+        position: relative;
+        margin: 30px 0;
+      }
+      .section-one > div {
+        position: absolute;
+        right: 10%;
+        top: 0;
+        background: white;
+        width: 300px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .section-one > div > p {
+        font-size: 40px;
+        font-weight: 600;
+      }
+      .section-two {
+        padding: 0 30px;
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+      }
+      .section-two-left > p {
+        font-size: 20px;
+        font-weight: 600;
+        color: #000;
+        margin: 0;
+        padding-bottom: 10px;
+      }
+      .section-two-left > h3 {
+        font-size: 26px;
+        font-weight: 600;
+        color: #555;
+        margin: 0;
+      }
+      .section-two-left > address {
+        display: flex;
+        flex-direction: column;
+        row-gap: 5px;
+        color: #333;
+      }
+      .section-two-right > p {
+        font-size: 18px;
+        color: #555;
+        font-weight: 500;
+        margin: 0;
+      }
+      .section-two-right > p > span {
+        font-size: 14px;
+        padding-left: 30px;
+        color: #333;
+      }
+      .section-two-right > div {
+        padding-top: 5px;
+        display: flex;
+        align-items: center;
+        column-gap: 30px;
+      }
+      .section-two-right > div > p {
+        font-size: 18px;
+        color: #555;
+        font-weight: 500;
+        margin: 0;
+      }
+      .table-container {
+        padding: 0 30px;
+      }
+      .table {
+        margin-top: 30px;
+        border-collapse: collapse;
+        width: 100%;
+      }
+      .table > thead > tr > th {
+        text-align: center;
+        padding: 8px;
+        color: #535353;
+        border: 1px solid #dddddd;
+        font-weight: 500;
+      }
+      .table > tr {
+        border: 1px solid #dddddd;
+      }
+      .table > tbody > tr > td {
+        text-align: center;
+        padding: 8px;
+        color: #969696;
+        border: 1px solid #dddddd;
+      }
+      .table > tbody > tr:last-child td {
+        font-weight: 600;
+        color: rgb(57, 57, 57);
+      }
+      .section-three {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 30px;
+        margin: 35px 0;
+      }
+      .section-three-left {
+        width: 50%;
+      }
+      .section-three-left > h5 {
+        font-size: 16px;
+      }
+      .section-three-left > h3 {
+        margin: 0;
+        font-size: 20px;
+        padding-bottom: 5px;
+        color: #555;
+      }
+      .section-three-left > p {
+        margin: 0;
+        color: #555;
+        font-size: 16px;
+      }
+      .section-three-left > p > span {
+        margin: 0;
+        color: #555;
+        font-size: 16px;
+        padding-left: 30px;
+      }
+      .section-three-right {
+        width: 50%;
+        text-align: right;
+      }
+      .section-three-right > p {
+        font-size: 14px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 10px;
+        margin: 0;
+        color: #555;
+      }
+      .section-three-right > p > small {
+        padding-left: 30px;
+        color: #333;
+        font-size: 14px;
+      }
+      .section-three-right > p:last-child {
+        font-weight: 700;
+      }
+      .section-four {
+        padding: 0 30px;
+      }
+      .section-four > img {
+        width: 100px;
+        margin-left: 50px;
+      }
+      .section-five {
+        background-color: yellow;
+        width: 100%;
+        height: 8px;
+        margin-top: 35px;
+        position: relative;
+      }
+      .section-five > span {
+        position: absolute;
+        bottom: 0;
+        right: 8%;
+        width: 200px;
+        height: fit-content;
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      .section-five > span > p {
+        margin: 0;
+        font-weight: 500;
+        border-top: 1px solid #000;
+        line-height: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="brand-logo">
+        <img
+          src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png"
+          alt=""
+        />
+        <span>Brand Name</span>
+      </div>
+      <div class="section-one">
+        <div>
+          <p>INVOICE</p>
+        </div>
+      </div>
+      <div class="section-two">
+        <div class="section-two-left">
+          <p>Invoice To:</p>
+          <h3>Kamrul Islam</h3>
+          <address>
+            <span>2, Peacy Park Khanika, 3-42, Zoo Road, Dhaka 1216</span>
+            <span>igensolutionsltd.com</span>
+            <span>+0123456789</span>
+          </address>
+        </div>
+        <div class="section-two-right">
+          <p>
+            invoice#
+            <span>53124</span>
+          </p>
+          <p>
+            Date
+            <span>01/01/2022</span>
+          </p>
+          <div>
+            <p>status</p>
+            <span class="btn btn-placed">Placed</span>
+            <!-- <span class="btn btn-confirmed">Confirmed</span>
+              <span class="btn btn-processing">Processing</span>
+              <span class="btn btn-shipped">Shipped</span>
+              <span class="btn btn-delivered">Delivered</span>
+              <span class="btn btn-cancel">Cancel</span> -->
+          </div>
+        </div>
+      </div>
+      <div class="table-container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Sl.</th>
+              <th>Item Description</th>
+              <th>Price</th>
+              <th>Qty</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Maria Anders</td>
+              <td>$20</td>
+              <td>5</td>
+              <td>$100</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Francisco Chang</td>
+              <td>$16</td>
+              <td>3</td>
+              <td>$48</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Francisco Chang</td>
+              <td>$20</td>
+              <td>10</td>
+              <td>$200</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Francisco Chang</td>
+              <td>$50</td>
+              <td>1</td>
+              <td>$50</td>
+            </tr>
+            <tr>
+              <td>Total</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>$398</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="section-three">
+        <div class="section-three-left">
+          <h5>Thank You For Your Business</h5>
+          <h3>Payment Info</h3>
+          <p>
+            Account#:
+            <span>121052108542</span>
+          </p>
+          <p>
+            A/C Name:
+            <span>Lorem Ipsum</span>
+          </p>
+          <p>
+            Account#:
+            <span>Add your Bank details</span>
+          </p>
+        </div>
+        <div class="section-three-right">
+          <p>
+            Sub Total:
+            <small>200$</small>
+          </p>
+          <p>
+            Tax:
+            <small>200$</small>
+          </p>
+          <p>
+            Discount:
+            <small>200$</small>
+          </p>
+          <p>
+            Cost:
+            <small>200$</small>
+          </p>
+          <p>
+            Total:
+            <small>200$</small>
+          </p>
+        </div>
+      </div>
+      <div class="section-four">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBcj-l6g_q2sHGz7La69ulw4v-FkG-wKraOA&usqp=CAU"
+          alt=""
+        />
+      </div>
+      <div class="section-five">
+        <span>
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Jean-Yves_Duclos_Signature.png"
+            alt=""
+            width="100px"
+          />
+          <p>Authorized Sign</p></span
+        >
+      </div>
+    </section>
+  </body>
+</html>
